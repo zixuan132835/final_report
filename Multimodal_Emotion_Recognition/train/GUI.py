@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-# @Time    : 2025/2/14 15:28
-# @Author  : shaocanfan
-# @File    : UI6.0_face_recognition_dlib_fatigue.py
 import sys
 import os
 import cv2
