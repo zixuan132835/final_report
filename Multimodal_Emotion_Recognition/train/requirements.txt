@@ -1,0 +1,12 @@
+matplotlib==3.3.3
+matplotlib-inline ==0.1.7
+numpy==1.19.5
+opencv-contrib-python==3.4.18.65
+opencv-python==4.5.3.56
+pandas==1.1.4
+PyQt5==5.15.6
+torch==1.10.2
+torchvision==0.11.3
+tqdm==4.64.1
+torchvision
+tensorflow
