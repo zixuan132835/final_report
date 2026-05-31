@@ -27,7 +27,7 @@ def validate(model, dataset, batch_size):
     acc = result / num
     return acc
 
-# 我们通过继承Dataset类来创建我们自己的数据加载类，命名为FaceDataset
+
 class FaceDataset(data.Dataset):
   
     # 初始化
@@ -54,7 +54,7 @@ class FaceDataset(data.Dataset):
         face_normalized = face_hist.reshape(1, 48, 48) / 255.0 # 为与pytorch中卷积神经网络API的设计相适配，需reshape原图
         # 用于训练的数据需为tensor类型
         face_tensor = torch.from_numpy(face_normalized) # 将python中的numpy数据类型转化为pytorch中的tensor数据类型
-        face_tensor = face_tensor.type('torch.FloatTensor') # 指定为'torch.FloatTensor'型，否则送进模型后会因数据类型不匹配而报错
+        face_tensor = face_tensor.type('torch.FloatTensor') # 指定为'torch.FloatTensor'型
         label = self.label[item]
         return face_tensor, label
 
@@ -174,7 +174,7 @@ def main():
     # 数据集实例化(创建数据集)
     train_dataset = FaceDataset(root='face_images/train_set')
     val_dataset = FaceDataset(root='face_images/verify_set')
-    # 超参数可自行指定  epochs = 100 太大了 我跑了一个晚上第二天早上还没结束，但是参数越高训练精度越准确，有GPU的试一下
+    
     model = train(train_dataset, val_dataset, batch_size=128, epochs=50, learning_rate=0.1, wt_decay=0)
     # 保存模型
     torch.save(model, 'model/model_cnn.pkl')
