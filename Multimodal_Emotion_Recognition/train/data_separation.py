@@ -1,7 +1,6 @@
 # 将emotion和pixels像素数据分离
 import pandas as pd
 
-
 path = '../dataset/train.csv'
 # 读取数据
 df = pd.read_csv(path)
