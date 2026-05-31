@@ -19,7 +19,7 @@ from tqdm import tqdm
 
 BATCH_SIZE = 128
 LR = 0.01
-EPOCH = 10   # ，所有训练样本在神经网络中都 进行了一次正向传播 和一次反向传播 ）测试不要太大，慢得很
+EPOCH = 10   
 DEVICE = torch.device('cpu')
 
 
@@ -31,7 +31,7 @@ path_vaild = 'face_images/resnet_vaild_set/'
 
 
 transforms_train = transforms.Compose([
-    transforms.Grayscale(),#使用ImageFolder默认扩展为三通道，重新变回去就行
+    transforms.Grayscale(),
     transforms.RandomHorizontalFlip(),#随机翻转
     transforms.ColorJitter(brightness=0.5, contrast=0.5),#随机调整亮度和对比度
     transforms.ToTensor()
@@ -88,7 +88,7 @@ def vgg_block(num_convs, in_channels, out_channels):
         else:
             blk.append(nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1))
         blk.append(nn.ReLU())
-    blk.append(nn.MaxPool2d(kernel_size=2, stride=2)) # 这里会使宽高减半
+    blk.append(nn.MaxPool2d(kernel_size=2, stride=2)) 
     return nn.Sequential(*blk)
     
     
@@ -254,7 +254,7 @@ f,ax=plt.subplots()
 y_true = [ emotion[i] for _,i in data_vaild]
 y_pred = [emotion[i] for i in y_pred]
 C2= confusion_matrix(y_true, y_pred, labels=["angry","disgust","fear","happy","sad","surprised","neutral"])#[0, 1, 2,3,4,5,6])
-print(C2) #打印出来看看
+print(C2) 
 sns.heatmap(C2,annot=True ,fmt='.20g',ax=ax) #热力图
 
 ax.set_title('confusion matrix') # 标题
